@@ -53,7 +53,6 @@ app.use(favicon(path.join(__dirname, 'assets', 'favicon.ico')));
 const authMiddleware = jwtAuthMiddleware([
   '/api-docs',
   '/openapi.json',
-  '/openapi.xml',
   '/favicon.ico',
   '/'
 ]);
