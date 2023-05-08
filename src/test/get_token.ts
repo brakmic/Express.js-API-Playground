@@ -6,7 +6,7 @@ const payload = {
   // Additional claims...
 };
 
-const secret: jwt.Secret = 'aab++112';
+const secret: jwt.Secret = 'mypassword';
 
 const token = jwt.sign(payload, secret, 
   { 

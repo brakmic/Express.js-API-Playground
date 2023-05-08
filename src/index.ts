@@ -50,6 +50,7 @@ const app = express();
 
 app.use(favicon(path.join(__dirname, 'assets', 'favicon.ico')));
 
+// configure jwt auth middleware and provide exclusions
 const authMiddleware = jwtAuthMiddleware([
   '/api-docs',
   '/openapi.json',
@@ -72,6 +73,7 @@ app.use(session({
 app.use(loggingMiddleware);
 app.use(openApiErrorHandlerMiddleware);
 
+// use express.js to configure routing controllers
 useExpressServer(app, {
   cors: true,
   routePrefix: BASE_PATH + 'api',
@@ -81,7 +83,7 @@ useExpressServer(app, {
   ],
 });
 
-
+// create json schemas
 const schemas = validationMetadatasToSchemas({
   refPointerPrefix: '#/components/schemas/',
   enableDebugMessages: true,

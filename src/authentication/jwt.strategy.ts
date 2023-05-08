@@ -10,7 +10,7 @@ interface JwtPayload {
 
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: 'aab++112',  // Local secret key
+  secretOrKey: 'mypassword',  // Local secret key
   algorithms: ['HS256'],  // We are using HS256 for local testing,
   jsonWebTokenOptions: {
     ignoreExpiration: false
