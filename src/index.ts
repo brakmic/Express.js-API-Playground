@@ -24,11 +24,7 @@ import cors from 'cors';
 import session from 'express-session';
 import passport from 'passport';
 import { validationMetadatasToSchemas } from 'class-validator-jsonschema';
-
-// We need this to get the metadata storage.
-// More info: https://github.com/typestack/class-transformer/issues/563
 import { defaultMetadataStorage as classTransformerMetadataStorage } from "class-transformer/cjs/storage";
-
 import { NextFunction, Request, Response } from 'express';
 import { jwtStrategy } from './authentication/jwt.strategy';
 import { jwtAuthMiddleware } from './middlewares/authentication/jwt-auth.middleware';
@@ -48,7 +44,8 @@ const BASE_PATH = '/';
 
 const app = express();
 
-app.use(favicon(path.join(__dirname, 'assets', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'assets', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // configure jwt auth middleware and provide exclusions
 const authMiddleware = jwtAuthMiddleware([
@@ -147,4 +144,3 @@ bootstrap().then(() => {
   console.error('Failed to bootstrap application', error);
   process.exit(1);
 });
-
